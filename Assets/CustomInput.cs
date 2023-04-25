@@ -35,6 +35,24 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fly"",
+                    ""type"": ""Button"",
+                    ""id"": ""e472a9e7-f523-40e0-a007-81d5cb3f5ce8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sink"",
+                    ""type"": ""Button"",
+                    ""id"": ""65bf77c4-5766-4b43-ae3f-469f2b192f10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -51,12 +69,23 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d837ba1e-641d-4efe-b4ee-1d696f3d51c1"",
-                    ""path"": ""<XRController>{LeftHand}/gripPressed"",
+                    ""id"": ""4718eb51-54f4-4fc7-808e-fe0dd75f2d30"",
+                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Menu"",
+                    ""action"": ""Fly"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0deee423-ba58-497a-a6ce-160fdcd928bf"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -68,6 +97,8 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // MenuSystem
         m_MenuSystem = asset.FindActionMap("MenuSystem", throwIfNotFound: true);
         m_MenuSystem_Menu = m_MenuSystem.FindAction("Menu", throwIfNotFound: true);
+        m_MenuSystem_Fly = m_MenuSystem.FindAction("Fly", throwIfNotFound: true);
+        m_MenuSystem_Sink = m_MenuSystem.FindAction("Sink", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,11 +161,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MenuSystem;
     private List<IMenuSystemActions> m_MenuSystemActionsCallbackInterfaces = new List<IMenuSystemActions>();
     private readonly InputAction m_MenuSystem_Menu;
+    private readonly InputAction m_MenuSystem_Fly;
+    private readonly InputAction m_MenuSystem_Sink;
     public struct MenuSystemActions
     {
         private @CustomInput m_Wrapper;
         public MenuSystemActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Menu => m_Wrapper.m_MenuSystem_Menu;
+        public InputAction @Fly => m_Wrapper.m_MenuSystem_Fly;
+        public InputAction @Sink => m_Wrapper.m_MenuSystem_Sink;
         public InputActionMap Get() { return m_Wrapper.m_MenuSystem; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -147,6 +182,12 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
+            @Fly.started += instance.OnFly;
+            @Fly.performed += instance.OnFly;
+            @Fly.canceled += instance.OnFly;
+            @Sink.started += instance.OnSink;
+            @Sink.performed += instance.OnSink;
+            @Sink.canceled += instance.OnSink;
         }
 
         private void UnregisterCallbacks(IMenuSystemActions instance)
@@ -154,6 +195,12 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
+            @Fly.started -= instance.OnFly;
+            @Fly.performed -= instance.OnFly;
+            @Fly.canceled -= instance.OnFly;
+            @Sink.started -= instance.OnSink;
+            @Sink.performed -= instance.OnSink;
+            @Sink.canceled -= instance.OnSink;
         }
 
         public void RemoveCallbacks(IMenuSystemActions instance)
@@ -174,5 +221,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface IMenuSystemActions
     {
         void OnMenu(InputAction.CallbackContext context);
+        void OnFly(InputAction.CallbackContext context);
+        void OnSink(InputAction.CallbackContext context);
     }
 }
