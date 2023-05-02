@@ -23,11 +23,12 @@ public class PlayerInput : MonoBehaviour
 
     public void OnFly()
     {
-        playerRB.AddForce(Vector3.up);
+        playerRB.AddForce(Vector3.up * 10);
+        Debug.Log("ButtonPrese");
     }
 
     public void OnSink()
     {
-        playerRB.AddForce(Vector3.down);
+        playerRB.AddForce(Vector3.down * 10);
     }
 }

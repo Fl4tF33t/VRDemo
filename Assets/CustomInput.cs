@@ -70,7 +70,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4718eb51-54f4-4fc7-808e-fe0dd75f2d30"",
-                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
+                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -81,7 +81,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0deee423-ba58-497a-a6ce-160fdcd928bf"",
-                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
