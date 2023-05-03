@@ -62,6 +62,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change"",
+                    ""type"": ""Button"",
+                    ""id"": ""3dce259c-cd1a-46c8-a93b-0b6fdea07a01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""InteractorChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e7fb8e8-404d-454d-b22e-e31ddc6330de"",
+                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_MenuSystem_Fly = m_MenuSystem.FindAction("Fly", throwIfNotFound: true);
         m_MenuSystem_Sink = m_MenuSystem.FindAction("Sink", throwIfNotFound: true);
         m_MenuSystem_InteractorChange = m_MenuSystem.FindAction("InteractorChange", throwIfNotFound: true);
+        m_MenuSystem_Change = m_MenuSystem.FindAction("Change", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +206,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_MenuSystem_Fly;
     private readonly InputAction m_MenuSystem_Sink;
     private readonly InputAction m_MenuSystem_InteractorChange;
+    private readonly InputAction m_MenuSystem_Change;
     public struct MenuSystemActions
     {
         private @CustomInput m_Wrapper;
@@ -193,6 +215,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Fly => m_Wrapper.m_MenuSystem_Fly;
         public InputAction @Sink => m_Wrapper.m_MenuSystem_Sink;
         public InputAction @InteractorChange => m_Wrapper.m_MenuSystem_InteractorChange;
+        public InputAction @Change => m_Wrapper.m_MenuSystem_Change;
         public InputActionMap Get() { return m_Wrapper.m_MenuSystem; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +237,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @InteractorChange.started += instance.OnInteractorChange;
             @InteractorChange.performed += instance.OnInteractorChange;
             @InteractorChange.canceled += instance.OnInteractorChange;
+            @Change.started += instance.OnChange;
+            @Change.performed += instance.OnChange;
+            @Change.canceled += instance.OnChange;
         }
 
         private void UnregisterCallbacks(IMenuSystemActions instance)
@@ -230,6 +256,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @InteractorChange.started -= instance.OnInteractorChange;
             @InteractorChange.performed -= instance.OnInteractorChange;
             @InteractorChange.canceled -= instance.OnInteractorChange;
+            @Change.started -= instance.OnChange;
+            @Change.performed -= instance.OnChange;
+            @Change.canceled -= instance.OnChange;
         }
 
         public void RemoveCallbacks(IMenuSystemActions instance)
@@ -253,5 +282,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnFly(InputAction.CallbackContext context);
         void OnSink(InputAction.CallbackContext context);
         void OnInteractorChange(InputAction.CallbackContext context);
+        void OnChange(InputAction.CallbackContext context);
     }
 }

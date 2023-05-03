@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingBlocks:
   - {fileID: 3574710796762424353, guid: 08afbc079bf9ad74790aa6011344b27f, type: 3}
+  - {fileID: 7639041654466982109, guid: 7aeafe086f511d4488d1c500aca7b80f, type: 3}
   buildingBlocksOutline:
   - {fileID: 782604914}
 --- !u!1 &1688375003
@@ -2335,7 +2336,7 @@ PrefabInstance:
     - target: {fileID: 7420855820252117525, guid: b521d9223e4a3fe42b10143de688b5ab,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8966559238115979937, guid: b521d9223e4a3fe42b10143de688b5ab,
         type: 3}

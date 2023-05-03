@@ -6,6 +6,7 @@ using UnityEngine.Rendering.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 public class BuildingController : MonoBehaviour
 {
+    public int index = 0;
     public  XRRayInteractor rayInteractor;
     public GameObject outlinePrefab;
     public GameObject selectedBlockPrefab;
