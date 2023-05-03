@@ -4,8 +4,32 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+
+    [SerializeField]
+    GameObject button;
+    [SerializeField]
+    Transform pressedPos;
+    [SerializeField]
+    Transform unpressedPos;
+    public GameObject random;
+
+    AudioSource sound;
+
+    private void Start()
     {
-        Debug.Log("button hit");
+        sound = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("dfd");
+        button.transform.position = pressedPos.position;
+        sound.Play();
+        Instantiate(random);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        button.transform.position = unpressedPos.position;
     }
 }

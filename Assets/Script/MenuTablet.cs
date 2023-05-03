@@ -22,4 +22,9 @@ public class MenuTablet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void OnButtonPressed()
+    {
+        Debug.Log("Presesd");
+    }
 }

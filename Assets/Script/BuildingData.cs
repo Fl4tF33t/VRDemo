@@ -17,11 +17,7 @@ public class BuildingData : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+     
     public bool CanBeCreated(RaycastHit hit)
     {
         if (hit.collider.gameObject.layer == 3)
