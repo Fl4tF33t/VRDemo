@@ -1648,6 +1648,8 @@ MonoBehaviour:
   menu: {fileID: 7420855820252117525, guid: b521d9223e4a3fe42b10143de688b5ab, type: 3}
   spawnPos: {fileID: 1688375004}
   rayInteractor: {fileID: 1255474573}
+  build: {fileID: 1316344850}
+  buildData: {fileID: 1316344851}
 --- !u!114 &1316344848
 MonoBehaviour:
   m_ObjectHideFlags: 0

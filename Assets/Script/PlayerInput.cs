@@ -14,6 +14,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     XRRayInteractor rayInteractor;
 
+    public BuildingController build;
+    public BuildingData buildData;
+
     Vector3 offset = new Vector3(-0.25f, 0.1f, -0.1f);
 
     private void Start()
@@ -38,5 +41,16 @@ public class PlayerInput : MonoBehaviour
     public void OnInteractorChange()
     {
         rayInteractor.enabled = !rayInteractor.enabled;
+    }
+
+    public void OnChange()
+    {
+        if(build.selectedBlockPrefab == buildData.buildingBlocks[0])
+        {
+            build.selectedBlockPrefab = buildData.buildingBlocks[1];
+        }else if(build.selectedBlockPrefab == buildData.buildingBlocks[1])
+        {
+            build.selectedBlockPrefab = buildData.buildingBlocks[0];
+        }
     }
 }

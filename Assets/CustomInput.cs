@@ -77,7 +77,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b1ccbed6-d564-45b7-a1e4-9eec73386acf"",
-                    ""path"": ""<OculusTouchController>/thumbstickClicked"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/thumbstickClicked"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -110,7 +110,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""769ca8cc-cc54-415a-86c5-c0659acc0147"",
-                    ""path"": ""<OculusTouchController>/thumbstickClicked"",
+                    ""path"": ""<XRController>{RightHand}/thumbstickClicked"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
